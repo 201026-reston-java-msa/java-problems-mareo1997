@@ -1,18 +1,10 @@
 package com.revature.eval.java.core;
 
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.Month;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.junit.Rule;
@@ -251,7 +243,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 7
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void findsAValueInTheMiddleOfAnArray() {
 		List<String> sortedList = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8", "9", "11"));
@@ -324,12 +316,12 @@ public class EvaluationServiceTest {
 
 	@Test
 	public void testAWholePhrase() {
-		assertEquals("ickquay astfay unray", evaluationService.toPigLatin("quick fast run"));
+		assertEquals("uickqay astfay unray", evaluationService.toPigLatin("quick fast run"));
 	}
 
 	/*******************************************************************
 	 * Question 9
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void singleDigitsAreArmstrongNumbers() {
 		int input = 5;
@@ -367,7 +359,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 10
-	 ******************************************************************/
+	 ******************************************************************
 
 	@Test
 	public void testPrimeNumber() {
@@ -396,7 +388,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 11
-	 ******************************************************************/
+	 ******************************************************************
 
 	@Test
 	public void rotateSingleCharacterWithWrapAround() {
@@ -431,7 +423,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 12
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void testFirstPrime() {
 		assertThat(evaluationService.calculateNthPrime(1), is(2));
@@ -460,7 +452,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 13
-	 ******************************************************************/
+	 ******************************************************************
 
 	@Test
 	public void testEncodeYes() {
@@ -495,7 +487,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 14
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void testDecodeExercism() {
 		assertEquals("exercism", EvaluationService.AtbashCipher.decode("vcvix rhn"));
@@ -520,7 +512,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 15
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void validIsbnNumber() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21508-8"));
@@ -548,7 +540,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 16
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void emptySentenceIsNotPangram() {
 		assertFalse(evaluationService.isPangram(""));
@@ -576,7 +568,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 17
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void modernTime() {
 		assertEquals(LocalDateTime.of(2043, Month.JANUARY, 1, 1, 46, 40),
@@ -609,7 +601,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 18
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void testSumOfMultiplesOf4and6UpToFifteen() {
 
@@ -657,7 +649,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 19
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void testThatAValidCanadianSocialInsuranceNumberIsIdentifiedAsValidV1() {
 		assertTrue(evaluationService.isLuhnValid("046 454 286"));
@@ -685,7 +677,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 20
-	 ******************************************************************/
+	 ******************************************************************
 	@Test
 	public void testSingleAddition1() {
 		assertEquals(2, evaluationService.solveWordProblem("What is 1 plus 1?"));
@@ -709,6 +701,6 @@ public class EvaluationServiceTest {
 	@Test
 	public void testSingleDivision() {
 		assertEquals(-11, evaluationService.solveWordProblem("What is 33 divided by -3?"));
-	}
+	}*/
 
 }

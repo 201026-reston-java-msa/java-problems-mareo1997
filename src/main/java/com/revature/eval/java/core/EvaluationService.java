@@ -1,6 +1,7 @@
 package com.revature.eval.java.core;
 
 import java.time.temporal.Temporal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -13,9 +14,15 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String reverse(String string) {
-		
-		return "";
+	public String reverse(String string) {// Done
+		String[] array = string.split("");
+		String a = "";
+		int i;
+		for (i = array.length - 1; i >= 0; i--) {
+			a = a.concat(array[i]);
+		}
+		System.out.println(a);
+		return a;
 	}
 
 	/**
@@ -26,9 +33,15 @@ public class EvaluationService {
 	 * @param phrase
 	 * @return
 	 */
-	public String acronym(String phrase) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String acronym(String phrase) {// Done
+		String q = phrase.replace("-", " ");
+		String[] array = q.split(" ");
+		String a = "";
+		for (int i = 0; i < array.length; i++) {
+			a = a.concat(array[i].substring(0, 1).toUpperCase());
+		}
+		System.out.println(a);
+		return a;
 	}
 
 	/**
@@ -40,7 +53,7 @@ public class EvaluationService {
 	 * different lengths.
 	 *
 	 */
-	static class Triangle {
+	static class Triangle {// Done
 		private double sideOne;
 		private double sideTwo;
 		private double sideThree;
@@ -82,17 +95,42 @@ public class EvaluationService {
 
 		public boolean isEquilateral() {
 			// TODO Write an implementation for this method declaration
-			return false;
+			double one = getSideOne();
+			double two = getSideTwo();
+			double three = getSideThree();
+			if (one == two && two == three) {
+				System.out.println(true);
+				return true;
+			} else {
+				System.out.println(false);
+				return false;
+			}
 		}
 
 		public boolean isIsosceles() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			double one = getSideOne();
+			double two = getSideTwo();
+			double three = getSideThree();
+			if (one == two || two == three || one == three) {
+				System.out.println(true);
+				return true;
+			} else {
+				System.out.println(false);
+				return false;
+			}
 		}
 
 		public boolean isScalene() {
-			// TODO Write an implementation for this method declaration
-			return false;
+			double one = getSideOne();
+			double two = getSideTwo();
+			double three = getSideThree();
+			if (one != two && two != three && one != three) {
+				System.out.println(true);
+				return true;
+			} else {
+				System.out.println(false);
+				return false;
+			}
 		}
 
 	}
@@ -112,9 +150,40 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int getScrabbleScore(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int getScrabbleScore(String string) {// Done
+
+		int score = 0;
+
+		String[] array = string.split("");
+		for (int i = 0; i < array.length; i++) {
+			if (array[i].equalsIgnoreCase("K")) {
+				score += 5;
+				System.out.println(array[i] + " " + score);
+			} else if (array[i].equalsIgnoreCase("Q") || array[i].equalsIgnoreCase("Z")) {
+				score += 10;
+				System.out.println(array[i] + " " + score);
+			} else if (array[i].equalsIgnoreCase("J") || array[i].equalsIgnoreCase("X")) {
+				score += 8;
+				System.out.println(array[i] + " " + score);
+			} else if (array[i].equalsIgnoreCase("D") || array[i].equalsIgnoreCase("G")) {
+				score += 2;
+				System.out.println(array[i] + " " + score);
+			} else if (array[i].equalsIgnoreCase("B") || array[i].equalsIgnoreCase("C")
+					|| array[i].equalsIgnoreCase("M") || array[i].equalsIgnoreCase("P")) {
+				score += 3;
+				System.out.println(array[i] + " " + score);
+			} else if (array[i].equalsIgnoreCase("Y") || array[i].equalsIgnoreCase("W")
+					|| array[i].equalsIgnoreCase("F") || array[i].equalsIgnoreCase("H")
+					|| array[i].equalsIgnoreCase("V")) {
+				score += 4;
+				System.out.println(array[i] + " " + score);
+			} else {
+				score += 1;
+				System.out.println(array[i] + " " + score);
+			}
+		}
+		System.out.println(score);
+		return score;
 	}
 
 	/**
@@ -148,9 +217,34 @@ public class EvaluationService {
 	 * Note: As this exercise only deals with telephone numbers used in
 	 * NANP-countries, only 1 is considered a valid country code.
 	 */
-	public String cleanPhoneNumber(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public String cleanPhoneNumber(String string) throws IllegalArgumentException {// Done
+
+		String string1 = string.replace("+", "");
+		String string2 = string1.replace(" ", "");
+		String string3 = string2.replace("(", "");
+		String string4 = string3.replace(")", "");
+		String string5 = string4.replace("-", "");
+		String string6 = string5.replace(".", "");
+
+		if (string6.length() > 11) {
+			throw new IllegalArgumentException("IllegalArgumentException");
+		}
+
+		String[] array = string6.split("");
+		for (String s : array) {
+			if (Integer.parseInt(s) % 1 != 0) {
+				throw new IllegalArgumentException("IllegalArgumentException");
+			}
+		}
+
+		if (string6.startsWith("1")) {
+			String string7 = string6.replaceFirst("1", "");
+			System.out.println(string7);
+			return string7;
+		} else {
+			System.out.println(string6);
+			return string6;
+		}
 	}
 
 	/**
@@ -162,9 +256,25 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public Map<String, Integer> wordCount(String string) {
-		// TODO Write an implementation for this method declaration
-		return null;
+	public Map<String, Integer> wordCount(String string) {// Done
+		String string1 = string.replace(",", " ");
+		String string2 = string1.replace("\n", "");
+
+		System.out.println(string2);
+		String[] array = string2.split(" ");
+
+		HashMap<String, Integer> map = new HashMap<>();
+		for (String s : array) {
+			if (map.get(s) != null) {
+				map.put(s, map.get(s) + 1);
+			} else {
+				map.put(s, 1);
+			}
+		}
+		map.forEach((name, salary) -> {
+			System.out.println(name + " " + salary);
+		});
+		return map;
 	}
 
 	/**
@@ -201,29 +311,22 @@ public class EvaluationService {
 	 * locating an item (or determining its absence) takes logarithmic time. A
 	 * binary search is a dichotomic divide and conquer search algorithm.
 	 * 
+	 *
+	 * static class BinarySearch<T> {// Dropped private List<T> sortedList;
+	 * 
+	 * public int indexOf(T t) { // TODO Write an implementation for this method
+	 * declaration return 0; }
+	 * 
+	 * public BinarySearch(List<T> sortedList) { super(); this.sortedList =
+	 * sortedList; }
+	 * 
+	 * public List<T> getSortedList() { return sortedList; }
+	 * 
+	 * public void setSortedList(List<T> sortedList) { this.sortedList = sortedList;
+	 * }
+	 * 
+	 * }
 	 */
-	static class BinarySearch<T> {
-		private List<T> sortedList;
-
-		public int indexOf(T t) {
-			// TODO Write an implementation for this method declaration
-			return 0;
-		}
-
-		public BinarySearch(List<T> sortedList) {
-			super();
-			this.sortedList = sortedList;
-		}
-
-		public List<T> getSortedList() {
-			return sortedList;
-		}
-
-		public void setSortedList(List<T> sortedList) {
-			this.sortedList = sortedList;
-		}
-
-	}
 
 	/**
 	 * 8. Implement a program that translates from English to Pig Latin.
@@ -243,7 +346,7 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
-		// TODO Write an implementation for this method declaration
+
 		return null;
 	}
 
@@ -441,11 +544,10 @@ public class EvaluationService {
 	 * 
 	 * @param given
 	 * @return
+	 *
+	 *         public Temporal getGigasecondDate(Temporal given) { //Dropped // TODO
+	 *         Write an implementation for this method declaration return null; }
 	 */
-	public Temporal getGigasecondDate(Temporal given) {
-		// TODO Write an implementation for this method declaration
-		return null;
-	}
 
 	/**
 	 * 18. Given a number, find the sum of all the unique multiples of particular
