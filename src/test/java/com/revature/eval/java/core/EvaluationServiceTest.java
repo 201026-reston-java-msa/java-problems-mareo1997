@@ -1,12 +1,17 @@
 package com.revature.eval.java.core;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -321,7 +326,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 9
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void singleDigitsAreArmstrongNumbers() {
 		int input = 5;
@@ -423,7 +428,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 12
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void testFirstPrime() {
 		assertThat(evaluationService.calculateNthPrime(1), is(2));
@@ -677,7 +682,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 20
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void testSingleAddition1() {
 		assertEquals(2, evaluationService.solveWordProblem("What is 1 plus 1?"));
@@ -701,6 +706,6 @@ public class EvaluationServiceTest {
 	@Test
 	public void testSingleDivision() {
 		assertEquals(-11, evaluationService.solveWordProblem("What is 33 divided by -3?"));
-	}*/
+	}
 
 }

@@ -1,6 +1,6 @@
 package com.revature.eval.java.core;
 
-import java.time.temporal.Temporal;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -346,8 +346,39 @@ public class EvaluationService {
 	 * @return
 	 */
 	public String toPigLatin(String string) {
+		String[] arr = string.split(" ");
+		// System.out.println(arr[2]);
+		String pig = "";
+		String replace, substring, latin = "";
 
-		return null;
+		for (String s : arr) {
+			if (!(latin.isEmpty())) {
+				// System.out.println("empty");
+				latin = latin.concat(" ");
+			}
+			pig = s;
+			// System.out.println(s);
+			boolean vowel = true;
+			while (vowel) {
+				if (pig.startsWith("a") || pig.startsWith("e") || pig.startsWith("i")
+						|| pig.startsWith("o") | pig.startsWith("u")) {
+					pig = pig.concat("ay");
+					// System.out.println(pig);
+					vowel = false;
+				} else {
+					// System.out.println(pig); // therapy
+					replace = pig.replace(pig.substring(0, 1), "");
+					// System.out.println(replace); // herapy
+					substring = replace.concat(pig.substring(0, 1));
+					// System.out.println(substring); // heraphyt
+					pig = substring;
+				}
+			}
+			latin = latin.concat(pig);
+		}
+		System.out.println(latin);
+		return latin;
+
 	}
 
 	/**
@@ -365,9 +396,23 @@ public class EvaluationService {
 	 * @param input
 	 * @return
 	 */
-	public boolean isArmstrongNumber(int input) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	public boolean isArmstrongNumber(int input) { // Test
+		int arm = String.valueOf(input).length();
+		String[] a = String.valueOf(input).split("");
+		// System.out.println(a[0]);
+		int x = 0;
+		for (int i = 0; i < arm; i++) {
+			// System.out.println(Integer.parseInt(a[0]));
+			x += (int) Math.pow(Integer.parseInt(a[i]), arm);
+			// System.out.println(x);
+		}
+		if (input == x) {
+			System.out.println(true);
+			return true;
+		} else {
+			System.out.println(false);
+			return false;
+		}
 	}
 
 	/**
@@ -380,9 +425,80 @@ public class EvaluationService {
 	 * @param l
 	 * @return
 	 */
+
 	public List<Long> calculatePrimeFactorsOf(long l) {
-		// TODO Write an implementation for this method declaration
-		return null;
+		// System.out.println(l);
+		List<Long> list = new ArrayList<>();
+		int a;
+		int i = 2;
+		boolean b = true;
+		System.out.println(i);
+		while (b) {
+			if (prime(i) == false) {
+				i++;
+			} else {
+				list.add((long) i);
+				a = (int) (l / i);
+				if (prime(a)) {
+					list.add((long) a);
+					b = false;
+				} else {
+					a = (int) (a / i);
+				}
+			}
+			System.out.println(list);
+
+		}
+
+		return list;
+	}
+
+	public boolean prime(int l) {
+		boolean a = false;
+		for (int i = 2; i <= l; i++) {
+			if (l == i) {
+				System.out.println(true);
+				a = true;
+			} else if (l % i == 0) {
+				System.out.println(l + " " + i);
+				System.out.println(false);
+				a = false;
+				break;
+			}
+		}
+		return a;
+	}
+
+	public List<Long> calculatePrimeFactorsOf2(long l) {
+		// System.out.println(l);
+		List<Long> list = new ArrayList<>();
+		List<Long> factors = new ArrayList<>();
+		List<Long> nonfactors = new ArrayList<>();
+		label1: for (int i = 2; i <= l; i++) {
+			if (l % i == 0) {
+			}
+			if (l % i == 0) { // 6%2=0 //6%3=0
+				for (int x = 2; x <= i; x++) {
+					if (x == i) { // 2=2
+						list.add((long) i);
+					} else if (i % x != 0) { // 3%2!=0
+						System.out.println(i + " " + x);
+						factors.add((long) i);
+						continue;
+					} else if (i % x == 0) { // 3%2!=0
+						System.out.println(i + " " + x);
+						factors.add((long) i);
+						continue label1;
+					}
+				}
+			} else { // delete
+				nonfactors.add((long) i);
+			}
+		}
+		System.out.println("List " + list);
+		System.out.println("Factors " + factors);
+		System.out.println("Nonfactors " + nonfactors);
+		return list;
 	}
 
 	/**
@@ -412,11 +528,8 @@ public class EvaluationService {
 	 * quick brown fox jumps over the lazy dog.
 	 */
 	static class RotationalCipher {
-		private int key;
-
 		public RotationalCipher(int key) {
 			super();
-			this.key = key;
 		}
 
 		public String rotate(String string) {
@@ -438,9 +551,28 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int calculateNthPrime(int i) { // i=6
+		int x = 0;
+		int z = 0;
+
+		if (i == 0) {
+			throw new IllegalArgumentException();
+		} else {
+			while (x != i) { // 0!=6
+				if (i == 0) {
+				} else {
+					if (prime(z)) { //
+						x += 1;
+						z++;
+					} else {
+						z++;
+					}
+				}
+			}
+			System.out.println(z - 1);
+			return z - 1;
+		}
+
 	}
 
 	/**
@@ -635,9 +767,21 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int solveWordProblem(String string) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int solveWordProblem(String string) {// Test
+		// System.out.println(string.replace("?", ""));
+		String[] arr = string.replace("?", "").split(" ");
+		int x = 0;
+		if (arr[3].startsWith("p")) {
+			x = Integer.parseInt(arr[2]) + Integer.parseInt(arr[4]);
+		} else if (arr[3].startsWith("mi")) {
+			x = Integer.parseInt(arr[2]) - Integer.parseInt(arr[4]);
+		} else if (arr[3].startsWith("mu")) {
+			x = Integer.parseInt(arr[2]) * Integer.parseInt(arr[5]);
+		} else if (arr[3].startsWith("d")) {
+			x = Integer.parseInt(arr[2]) / Integer.parseInt(arr[5]);
+		}
+		System.out.println(x);
+		return x;
 	}
 
 }
