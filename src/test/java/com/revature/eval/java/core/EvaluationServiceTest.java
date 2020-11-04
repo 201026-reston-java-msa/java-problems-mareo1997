@@ -249,52 +249,50 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 7
 	 ******************************************************************
-	@Test
-	public void findsAValueInTheMiddleOfAnArray() {
-		List<String> sortedList = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8", "9", "11"));
-
-		EvaluationService.BinarySearch<String> search = new EvaluationService.BinarySearch<>(sortedList);
-
-		assertEquals(3, search.indexOf("6"));
-	}
-
-	@Test
-	public void findsAValueAtTheBeginningOfAnArray() {
-		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
-
-		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
-
-		assertEquals(0, search.indexOf(1));
-	}
-
-	@Test
-	public void findsAValueAtTheEndOfAnArray() {
-		List<Integer> sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
-
-		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedList);
-
-		assertEquals(6, search.indexOf(11));
-	}
-
-	@Test
-	public void findsAValueInAnArrayOfOddLength() {
-		List<Integer> sortedListOfOddLength = Collections
-				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634));
-
-		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfOddLength);
-
-		assertEquals(9, search.indexOf(144));
-	}
-
-	@Test
-	public void findsAValueInAnArrayOfEvenLength() {
-		List<Integer> sortedListOfEvenLength = Collections
-				.unmodifiableList(Arrays.asList(1, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377));
-
-		EvaluationService.BinarySearch<Integer> search = new EvaluationService.BinarySearch<>(sortedListOfEvenLength);
-
-		assertEquals(5, search.indexOf(21));
-	}
+	 * @Test public void findsAValueInTheMiddleOfAnArray() { List<String> sortedList
+	 *       = Collections.unmodifiableList(Arrays.asList("1", "3", "4", "6", "8",
+	 *       "9", "11"));
+	 * 
+	 *       EvaluationService.BinarySearch<String> search = new
+	 *       EvaluationService.BinarySearch<>(sortedList);
+	 * 
+	 *       assertEquals(3, search.indexOf("6")); }
+	 * 
+	 * @Test public void findsAValueAtTheBeginningOfAnArray() { List<Integer>
+	 *       sortedList = Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8,
+	 *       9, 11));
+	 * 
+	 *       EvaluationService.BinarySearch<Integer> search = new
+	 *       EvaluationService.BinarySearch<>(sortedList);
+	 * 
+	 *       assertEquals(0, search.indexOf(1)); }
+	 * 
+	 * @Test public void findsAValueAtTheEndOfAnArray() { List<Integer> sortedList =
+	 *       Collections.unmodifiableList(Arrays.asList(1, 3, 4, 6, 8, 9, 11));
+	 * 
+	 *       EvaluationService.BinarySearch<Integer> search = new
+	 *       EvaluationService.BinarySearch<>(sortedList);
+	 * 
+	 *       assertEquals(6, search.indexOf(11)); }
+	 * 
+	 * @Test public void findsAValueInAnArrayOfOddLength() { List<Integer>
+	 *       sortedListOfOddLength = Collections .unmodifiableList(Arrays.asList(1,
+	 *       3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 634));
+	 * 
+	 *       EvaluationService.BinarySearch<Integer> search = new
+	 *       EvaluationService.BinarySearch<>(sortedListOfOddLength);
+	 * 
+	 *       assertEquals(9, search.indexOf(144)); }
+	 * 
+	 * @Test public void findsAValueInAnArrayOfEvenLength() { List<Integer>
+	 *       sortedListOfEvenLength = Collections .unmodifiableList(Arrays.asList(1,
+	 *       3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377));
+	 * 
+	 *       EvaluationService.BinarySearch<Integer> search = new
+	 *       EvaluationService.BinarySearch<>(sortedListOfEvenLength);
+	 * 
+	 *       assertEquals(5, search.indexOf(21)); }
+	 */
 
 	/*******************************************************************
 	 * Question 8
@@ -364,7 +362,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 10
-	 ******************************************************************
+	 ******************************************************************/
 
 	@Test
 	public void testPrimeNumber() {
@@ -393,7 +391,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 11
-	 ******************************************************************
+	 ******************************************************************/
 
 	@Test
 	public void rotateSingleCharacterWithWrapAround() {
@@ -457,7 +455,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 13
-	 ******************************************************************
+	 ******************************************************************/
 
 	@Test
 	public void testEncodeYes() {
@@ -492,7 +490,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 14
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void testDecodeExercism() {
 		assertEquals("exercism", EvaluationService.AtbashCipher.decode("vcvix rhn"));
@@ -517,7 +515,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 15
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void validIsbnNumber() {
 		assertTrue(evaluationService.isValidIsbn("3-598-21508-8"));
@@ -545,7 +543,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 16
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void emptySentenceIsNotPangram() {
 		assertFalse(evaluationService.isPangram(""));
@@ -574,39 +572,35 @@ public class EvaluationServiceTest {
 	/*******************************************************************
 	 * Question 17
 	 ******************************************************************
-	@Test
-	public void modernTime() {
-		assertEquals(LocalDateTime.of(2043, Month.JANUARY, 1, 1, 46, 40),
-				evaluationService.getGigasecondDate(LocalDate.of(2011, Month.APRIL, 25)));
-	}
-
-	@Test
-	public void afterEpochTime() {
-		assertEquals(LocalDateTime.of(2009, Month.FEBRUARY, 19, 1, 46, 40),
-				evaluationService.getGigasecondDate(LocalDate.of(1977, Month.JUNE, 13)));
-	}
-
-	@Test
-	public void beforeEpochTime() {
-		assertEquals(LocalDateTime.of(1991, Month.MARCH, 27, 1, 46, 40),
-				evaluationService.getGigasecondDate(LocalDate.of(1959, Month.JULY, 19)));
-	}
-
-	@Test
-	public void withFullTimeSpecified() {
-		assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 2, 23, 46, 40),
-				evaluationService.getGigasecondDate(LocalDateTime.of(2015, Month.JANUARY, 24, 22, 0, 0)));
-	}
-
-	@Test
-	public void withFullTimeSpecifiedAndDayRollover() {
-		assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 3, 1, 46, 39),
-				evaluationService.getGigasecondDate(LocalDateTime.of(2015, Month.JANUARY, 24, 23, 59, 59)));
-	}
+	 * @Test public void modernTime() { assertEquals(LocalDateTime.of(2043,
+	 *       Month.JANUARY, 1, 1, 46, 40),
+	 *       evaluationService.getGigasecondDate(LocalDate.of(2011, Month.APRIL,
+	 *       25))); }
+	 * 
+	 * @Test public void afterEpochTime() { assertEquals(LocalDateTime.of(2009,
+	 *       Month.FEBRUARY, 19, 1, 46, 40),
+	 *       evaluationService.getGigasecondDate(LocalDate.of(1977, Month.JUNE,
+	 *       13))); }
+	 * 
+	 * @Test public void beforeEpochTime() { assertEquals(LocalDateTime.of(1991,
+	 *       Month.MARCH, 27, 1, 46, 40),
+	 *       evaluationService.getGigasecondDate(LocalDate.of(1959, Month.JULY,
+	 *       19))); }
+	 * 
+	 * @Test public void withFullTimeSpecified() {
+	 *       assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 2, 23, 46, 40),
+	 *       evaluationService.getGigasecondDate(LocalDateTime.of(2015,
+	 *       Month.JANUARY, 24, 22, 0, 0))); }
+	 * 
+	 * @Test public void withFullTimeSpecifiedAndDayRollover() {
+	 *       assertEquals(LocalDateTime.of(2046, Month.OCTOBER, 3, 1, 46, 39),
+	 *       evaluationService.getGigasecondDate(LocalDateTime.of(2015,
+	 *       Month.JANUARY, 24, 23, 59, 59))); }
+	 */
 
 	/*******************************************************************
 	 * Question 18
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void testSumOfMultiplesOf4and6UpToFifteen() {
 
@@ -654,7 +648,7 @@ public class EvaluationServiceTest {
 
 	/*******************************************************************
 	 * Question 19
-	 ******************************************************************
+	 ******************************************************************/
 	@Test
 	public void testThatAValidCanadianSocialInsuranceNumberIsIdentifiedAsValidV1() {
 		assertTrue(evaluationService.isLuhnValid("046 454 286"));

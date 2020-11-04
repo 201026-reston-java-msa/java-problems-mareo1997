@@ -7,6 +7,19 @@ import java.util.Map;
 
 public class EvaluationService {
 
+	public boolean prime(int l) {
+		boolean a = false;
+		for (int i = 2; i <= l; i++) {
+			if (l == i) {//System.out.println(l + " is prime");
+				a = true;
+			} else if (l % i == 0) {// System.out.println(l + " " + i);// System.out.println(false);
+				a = false;
+				break;
+			}
+		}// System.out.println(a);
+		return a;
+	}
+
 	/**
 	 * 1. Without using the StringBuilder or StringBuffer class, write a method that
 	 * reverses a String. Example: reverse("example"); -> "elpmaxe"
@@ -158,28 +171,28 @@ public class EvaluationService {
 		for (int i = 0; i < array.length; i++) {
 			if (array[i].equalsIgnoreCase("K")) {
 				score += 5;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else if (array[i].equalsIgnoreCase("Q") || array[i].equalsIgnoreCase("Z")) {
 				score += 10;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else if (array[i].equalsIgnoreCase("J") || array[i].equalsIgnoreCase("X")) {
 				score += 8;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else if (array[i].equalsIgnoreCase("D") || array[i].equalsIgnoreCase("G")) {
 				score += 2;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else if (array[i].equalsIgnoreCase("B") || array[i].equalsIgnoreCase("C")
 					|| array[i].equalsIgnoreCase("M") || array[i].equalsIgnoreCase("P")) {
 				score += 3;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else if (array[i].equalsIgnoreCase("Y") || array[i].equalsIgnoreCase("W")
 					|| array[i].equalsIgnoreCase("F") || array[i].equalsIgnoreCase("H")
 					|| array[i].equalsIgnoreCase("V")) {
 				score += 4;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			} else {
 				score += 1;
-				System.out.println(array[i] + " " + score);
+				// System.out.println(array[i] + " " + score);
 			}
 		}
 		System.out.println(score);
@@ -260,7 +273,7 @@ public class EvaluationService {
 		String string1 = string.replace(",", " ");
 		String string2 = string1.replace("\n", "");
 
-		System.out.println(string2);
+		// System.out.println(string2);
 		String[] array = string2.split(" ");
 
 		HashMap<String, Integer> map = new HashMap<>();
@@ -345,7 +358,7 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public String toPigLatin(String string) {
+	public String toPigLatin(String string) { // Done
 		String[] arr = string.split(" ");
 		// System.out.println(arr[2]);
 		String pig = "";
@@ -396,7 +409,7 @@ public class EvaluationService {
 	 * @param input
 	 * @return
 	 */
-	public boolean isArmstrongNumber(int input) { // Test
+	public boolean isArmstrongNumber(int input) { // Done
 		int arm = String.valueOf(input).length();
 		String[] a = String.valueOf(input).split("");
 		// System.out.println(a[0]);
@@ -425,79 +438,32 @@ public class EvaluationService {
 	 * @param l
 	 * @return
 	 */
-
-	public List<Long> calculatePrimeFactorsOf(long l) {
-		// System.out.println(l);
+	public List<Long> calculatePrimeFactorsOf(long l) { //DONE
 		List<Long> list = new ArrayList<>();
-		int a;
-		int i = 2;
-		boolean b = true;
-		System.out.println(i);
-		while (b) {
-			if (prime(i) == false) {
-				i++;
-			} else {
-				list.add((long) i);
-				a = (int) (l / i);
-				if (prime(a)) {
-					list.add((long) a);
-					b = false;
-				} else {
-					a = (int) (a / i);
+		boolean prime = false;
+
+		for (int x = 2; x <= l; x++) {
+			if (prime(x) && l % x == 0) { // 5 and 901255/5=180251
+				list.add((long) x);//System.out.println("first in list " + x);
+				l = l / x; // 901255/5=180251
+				while (l != 1) {//System.out.println("l "+l);
+					if (l%x!= 0) { // 180251%5 not equal 0//System.out.println(l + " is not mod of " + x);
+						x++; // 6
+					} else if (prime((int) l) && l % x == 0) {//System.out.println(l+" is prime");
+						list.add((long) l);//System.out.println("in list " + l);
+						prime = true;
+						break;
+					} else {//System.out.println(l+" is not prime");
+						l = l / x; // 6/2=3
+						list.add((long) x);//System.out.println("in list " + x);
+					}
 				}
 			}
-			System.out.println(list);
-
-		}
-
-		return list;
-	}
-
-	public boolean prime(int l) {
-		boolean a = false;
-		for (int i = 2; i <= l; i++) {
-			if (l == i) {
-				System.out.println(true);
-				a = true;
-			} else if (l % i == 0) {
-				System.out.println(l + " " + i);
-				System.out.println(false);
-				a = false;
+			if (prime) {
 				break;
 			}
 		}
-		return a;
-	}
-
-	public List<Long> calculatePrimeFactorsOf2(long l) {
-		// System.out.println(l);
-		List<Long> list = new ArrayList<>();
-		List<Long> factors = new ArrayList<>();
-		List<Long> nonfactors = new ArrayList<>();
-		label1: for (int i = 2; i <= l; i++) {
-			if (l % i == 0) {
-			}
-			if (l % i == 0) { // 6%2=0 //6%3=0
-				for (int x = 2; x <= i; x++) {
-					if (x == i) { // 2=2
-						list.add((long) i);
-					} else if (i % x != 0) { // 3%2!=0
-						System.out.println(i + " " + x);
-						factors.add((long) i);
-						continue;
-					} else if (i % x == 0) { // 3%2!=0
-						System.out.println(i + " " + x);
-						factors.add((long) i);
-						continue label1;
-					}
-				}
-			} else { // delete
-				nonfactors.add((long) i);
-			}
-		}
 		System.out.println("List " + list);
-		System.out.println("Factors " + factors);
-		System.out.println("Nonfactors " + nonfactors);
 		return list;
 	}
 
@@ -527,14 +493,52 @@ public class EvaluationService {
 	 * gur ynml qbt. ROT13 Gur dhvpx oebja sbk whzcf bire gur ynml qbt. gives The
 	 * quick brown fox jumps over the lazy dog.
 	 */
-	static class RotationalCipher {
+	static class RotationalCipher {// Done
+		String alphabet = "abcdefghijklmnopqrstuvwxyz";
+
+		String[] letter = alphabet.split("");
+		String[] ceasar;
+		String encode = "";
+
 		public RotationalCipher(int key) {
 			super();
+			System.out.println(alphabet);
+			String rot = alphabet.replace(alphabet.substring(0, key), "");
+			// System.out.println(rot);
+			String cipher = rot.concat(alphabet.substring(0, key));
+			System.out.println(cipher);
+			ceasar = cipher.split("");
 		}
 
 		public String rotate(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+
+			String[] plain = string.split("");
+			for (String s : plain) {
+				int i = 0;
+				boolean notletter = true;
+				// System.out.println("1st loop "+s);
+				for (String t : letter) {
+					// System.out.println("2nd loop "+t);
+					if (t.equalsIgnoreCase(s)) {
+						// System.out.println(i);
+						// System.out.println(s+" to "+ceasar[i]);
+						if (s.toUpperCase().equals(s)) {
+							encode = encode.concat(ceasar[i].toUpperCase());
+							notletter = false;
+						} else {
+							encode = encode.concat(ceasar[i]);
+							notletter = false;
+						}
+					}
+					i++;
+				}
+				if (notletter) {
+					encode = encode.concat(s);
+				}
+			}
+
+			System.out.println(encode);
+			return encode;
 		}
 
 	}
@@ -551,7 +555,7 @@ public class EvaluationService {
 	 * @param i
 	 * @return
 	 */
-	public int calculateNthPrime(int i) { // i=6
+	public int calculateNthPrime(int i) { // Done
 		int x = 0;
 		int z = 0;
 
@@ -599,7 +603,11 @@ public class EvaluationService {
 	 * rxpyi ldmul cqfnk hlevi gsvoz abwlt gives thequickbrownfoxjumpsoverthelazydog
 	 *
 	 */
-	static class AtbashCipher {
+	static class AtbashCipher { // Done
+		static String plain = "abcdefghijklmnopqrstuvwxyz";
+		static String[] plainarr = plain.split("");
+		static String cipher = "zyxwvutsrqponmlkjihgfedcba";
+		static String[] cipherarr = cipher.split("");
 
 		/**
 		 * Question 13
@@ -608,8 +616,34 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String encode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			System.out.println(plain);
+			System.out.println(cipher);
+			String[] arr = string.replace(".", "").replace(",", "").replace(" ", "").split("");
+			String encode = "";
+			int sep = 0;
+			for (String a : arr) {
+				int i = 0;
+				if (sep == 5) {
+					sep = 0;
+					encode = encode.concat(" ");
+				}
+				boolean notletter = true;
+				for (String p : plainarr) {
+
+					if (a.equalsIgnoreCase(p)) {
+						encode = encode.concat(cipherarr[i]);
+						notletter = false;
+						sep++;
+					}
+					i++;
+				}
+				if (notletter) {
+					encode = encode.concat(a);
+					sep++;
+				}
+			}
+			System.out.println(encode);
+			return encode;
 		}
 
 		/**
@@ -619,8 +653,28 @@ public class EvaluationService {
 		 * @return
 		 */
 		public static String decode(String string) {
-			// TODO Write an implementation for this method declaration
-			return null;
+			System.out.println(cipher);
+			System.out.println(plain);
+			String[] arr = string.replace(" ", "").split("");
+			String decode = "";
+
+			for (String a : arr) {
+				int i = 0;
+				boolean notletter = true;
+				for (String p : cipherarr) {
+					if (a.equalsIgnoreCase(p)) {
+						decode = decode.concat(plainarr[i]);
+						notletter = false;
+					}
+					i++;
+				}
+
+				if (notletter) {
+					decode = decode.concat(a);
+				}
+			}
+			System.out.println(decode);
+			return decode;
 		}
 	}
 
@@ -646,9 +700,35 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public boolean isValidIsbn(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	public boolean isValidIsbn(String string) { // DONE
+		String[] arr = string.replace("-", "").split("");
+		int i = 0;
+
+		for (String s : arr) {
+			if (s.equalsIgnoreCase("X")) {
+				arr[i] = "10";
+			}
+			i++;
+		}
+
+		try {
+			int ISBN = (Integer.parseInt(arr[0]) * 10 + Integer.parseInt(arr[1]) * 9 + Integer.parseInt(arr[2]) * 8
+					+ Integer.parseInt(arr[3]) * 7 + Integer.parseInt(arr[4]) * 6 + Integer.parseInt(arr[5]) * 5
+					+ Integer.parseInt(arr[6]) * 4 + Integer.parseInt(arr[7]) * 3 + Integer.parseInt(arr[8]) * 2
+					+ Integer.parseInt(arr[9]) * 1) % 11;
+			// System.out.println(ISBN);
+			if (ISBN == 0) {
+				System.out.println(true);
+				return true;
+			} else {
+				System.out.println(false);
+				return false;
+			}
+		} catch (NumberFormatException e) {
+			System.out.println(false);
+			return false;
+		}
+
 	}
 
 	/**
@@ -664,9 +744,32 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public boolean isPangram(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	public boolean isPangram(String string) {// DONE
+		String[] arr = string.replace(" ", "").split("");
+		String plain = "abcdefghijklmnopqrstuvwxyz";
+		String[] plainarr = plain.split("");
+		boolean[] pargram = new boolean[26];
+
+		for (String a : arr) {
+			int i = 0;
+			for (String letter : plainarr) {
+				if (a.equalsIgnoreCase(letter)) {
+					pargram[i] = true;
+				}
+				i++;
+			}
+		}
+
+		int i = 1;
+		for (boolean b : pargram) {
+			System.out.println(i + " " + b);
+			if (b == false) {
+				return false;
+			}
+			i++;
+		}
+
+		return true;
 	}
 
 	/**
@@ -694,9 +797,32 @@ public class EvaluationService {
 	 * @param set
 	 * @return
 	 */
-	public int getSumOfMultiples(int i, int[] set) {
-		// TODO Write an implementation for this method declaration
-		return 0;
+	public int getSumOfMultiples(int i, int[] set) { // DONE
+		int sum = 0;
+		int[] arr = new int[i];
+		int count = 1;
+
+		for (int x = 1; x < i; x++) {
+			arr[x] = count;
+			count++;
+		}
+
+		for (int s : set) {
+			// System.out.println("set "+s);
+			int z = 0;
+			for (int a : arr) {
+				if (a % s == 0) {
+					// System.out.println("arr "+a);
+					sum += a;
+					// System.out.println("sum " + sum);
+					arr[z] = 1;
+				}
+				z++;
+			}
+		}
+
+		System.out.println(sum);
+		return sum;
 	}
 
 	/**
@@ -714,12 +840,14 @@ public class EvaluationService {
 	 * 
 	 * Example 1: valid credit card number 1 4539 1488 0343 6467 The first step of
 	 * the Luhn algorithm is to double every second digit, starting from the right.
-	 * We will be doubling
+	 * We will be doubling 4539 1488 0343 6467 4_3_ 1_8_ 0_4_ 6_6_
 	 * 
-	 * 4_3_ 1_8_ 0_4_ 6_6_ If doubling the number results in a number greater than 9
-	 * then subtract 9 from the product. The results of our doubling:
+	 * If doubling the number results in a number greater than 9 then subtract 9
+	 * from the product. The results of our doubling:
 	 * 
-	 * 8569 2478 0383 3437 Then sum all of the digits:
+	 * 4539 1488 0343 6467 8569 2478 0383 3437
+	 * 
+	 * Then sum all of the digits:
 	 * 
 	 * 8+5+6+9+2+4+7+8+0+3+8+3+3+4+3+7 = 80 If the sum is evenly divisible by 10,
 	 * then the number is valid. This number is valid!
@@ -735,9 +863,58 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public boolean isLuhnValid(String string) {
-		// TODO Write an implementation for this method declaration
-		return false;
+	public boolean isLuhnValid(String string) { //DONE
+		if (string.startsWith("1")) {
+			string = string.replaceFirst("1", "");
+		}
+
+		String[] arr = string.replace(" ", "").split("");
+
+		if (string.length() <= 1) {
+			return false;
+		}
+
+		for (String a : arr) {
+			System.out.print(a);
+		}
+		System.out.println();
+
+		try {
+
+			for (int i = 1; i < arr.length; i += 2) {
+
+				int doubling = Integer.parseInt(arr[i]) * 2;
+
+				if (Integer.parseInt(arr[i]) >= 5) {
+					doubling = doubling - 9;
+				}
+
+				arr[i] = Integer.toString(doubling);
+			}
+
+			for (String a : arr) {
+				System.out.print(a);
+			}
+			System.out.println();
+
+			int sum = 0;
+			for (String a : arr) {
+				sum += Integer.parseInt(a);
+				System.out.println(a + " sum " + sum);
+			}
+
+			if (sum % 10 == 0) {
+				System.out.println(true);
+				return true;
+			} else {
+				System.out.println(false);
+				return false;
+			}
+
+		} catch (NumberFormatException e) {
+			System.out.println(false);
+			return false;
+		}
 	}
 
 	/**
@@ -767,7 +944,7 @@ public class EvaluationService {
 	 * @param string
 	 * @return
 	 */
-	public int solveWordProblem(String string) {// Test
+	public int solveWordProblem(String string) {// Done
 		// System.out.println(string.replace("?", ""));
 		String[] arr = string.replace("?", "").split(" ");
 		int x = 0;
